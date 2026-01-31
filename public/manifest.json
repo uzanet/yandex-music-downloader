@@ -1,9 +1,13 @@
 {
   "name": "Yandex Music Downloader",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "Daniil Zhdanovich",
   "description": "Загружай любимые треки без ограничений, с новым расширением для Yandex Music!",
   "permissions": [
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
     "*://music.yandex.by/*",
     "*://music.yandex.ru/*",
     "*://music.yandex.ua/*",
@@ -12,13 +16,10 @@
     "*://music.yandex.com/*",
     "*://storage.mds.yandex.net/*",
     "*://*.storage.yandex.net/*",
-    "*://avatars.yandex.net/*",
-    "downloads",
-    "storage"
+    "*://avatars.yandex.net/*"
   ],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
@@ -28,19 +29,21 @@
     }
   ],
   "web_accessible_resources": [
-    "images/icon-dark.svg",
-    "images/icon-light.svg"
+    {
+      "resources": ["images/icon-dark.svg", "images/icon-light.svg"],
+      "matches": ["*://music.yandex.uz/*", "*://music.yandex.by/*", "*://music.yandex.ru/*", "*://music.yandex.ua/*", "*://music.yandex.kz/*", "*://music.yandex.com/*"]
+    }
   ],
-  "browser_action": { 
+  "action": {
     "default_icon": "images/inactive-icon.png",
     "default_popup": "view/popup.html"
   },
-  "icons":{
-    "16":"images/logo/logo16.png",
-    "24":"images/logo/logo24.png",
-    "32":"images/logo/logo32.png",
-    "48":"images/logo/logo48.png",
-    "128":"images/logo/logo128.png"
+  "icons": {
+    "16": "images/logo/logo16.png",
+    "24": "images/logo/logo24.png",
+    "32": "images/logo/logo32.png",
+    "48": "images/logo/logo48.png",
+    "128": "images/logo/logo128.png"
   },
-  "manifest_version": 2
+  "manifest_version": 3
 }
