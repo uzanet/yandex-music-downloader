@@ -410,7 +410,7 @@ export class BackgroundApiService {
 
 chrome.runtime.onConnect.addListener(async port => {
   /* `port.name` is locale */
-  chrome.browserAction.setIcon({
+  chrome.action.setIcon({
     path: 'images/active-icon.png',
     tabId: port.sender?.tab?.id,
   });
